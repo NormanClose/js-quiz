@@ -3,6 +3,7 @@ import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
 import AddQuestionPage from '../components/AddQuestionPage';
+import QuestionDashboardPage from '../components/QuestionDashboardPage';
 import DashboardPage from '../components/DashboardPage';
 import NotFoundPage from '../components/NotFoundPage';
 import LoginPage from '../components/LoginPage';
@@ -18,6 +19,7 @@ const AppRouter = () => (
         <PublicRoute path="/" component={LoginPage} exact={true} />
         <PrivateRoute path="/dashboard" component={DashboardPage} />
         <PrivateRoute path="/admin/add" component={AddQuestionPage} />
+        <PrivateRoute path="/admin/dashboard" component={QuestionDashboardPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

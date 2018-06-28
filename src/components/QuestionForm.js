@@ -157,11 +157,11 @@ const PostForm = withFormik({
       answer6 : answer6 || ''
     };
   },
-  validationSchema: Yup.object().shape({
-    question: Yup.string().min(5, 'Question must be 5 characters or longer').required('Question is required'),
-    answer1: Yup.string().min(5, 'Answer 1 must be 5 characters or longer').required('Answer 1 is required')
-  }),
-  handleSubmit: (values, { resetForm, setErrors, setSubmitting }) => {
+  // validationSchema: Yup.object().shape({
+  //   question: Yup.string().min(5, 'Question must be 5 characters or longer').required('Question is required'),
+  //   answer1: Yup.string().min(5, 'Answer 1 must be 5 characters or longer').required('Answer 1 is required')
+  // }),
+  handleSubmit: (values, { resetForm, setErrors, setSubmitting, props }) => {
 
     console.log(values);
       
@@ -179,7 +179,7 @@ const PostForm = withFormik({
     if(values.answer6Correct) {
       countQuestionsCorrect++;}
 
-    alert('countQuestionsCorrect' + countQuestionsCorrect )
+    //alert('countQuestionsCorrect' + countQuestionsCorrect )
 
     let countErrors = 0;
 
@@ -229,6 +229,7 @@ const PostForm = withFormik({
     }
 
     setSubmitting(false);
+    props.onSubmit(values);
   }
 })(InnerForm);
 

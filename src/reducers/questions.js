@@ -5,6 +5,7 @@ const questionsReducerDefaultState = [];
 export default (state = questionsReducerDefaultState, action) => {
   switch (action.type) {
     case 'ADD_QUESTION':
+      console.log('reducer', action.question);
       return [
         ...state,
         action.question

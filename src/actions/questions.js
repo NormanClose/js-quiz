@@ -1,5 +1,5 @@
-import uuid from 'uuid';
-//import database from '../firebase/firebase';
+//import uuid from 'uuid';
+import database from '../firebase/firebase';
 
 // ADD_QUESTION
 export const addQuestion = (question) => ({
@@ -7,7 +7,7 @@ export const addQuestion = (question) => ({
   question
 });
 
-export const startAddExpense = (questionData = {}) => {
+export const startAddQuestion = (questionData = {}) => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid
     const {
@@ -28,69 +28,68 @@ export const startAddExpense = (questionData = {}) => {
       answer6Correct = false,
       answer6 = ''
     } = questionData;
-    const expense = { language,level,question,questionType,answer1Correct,answer1,answer2Correct,answer2,answer3Correct,answer3,answer4Correct,answer4,answer5Correct,answer5,answer6Correct,answer6};
+    const questionInput = { language,level,question,questionType,answer1Correct,answer1,answer2Correct,answer2,answer3Correct,answer3,answer4Correct,answer4,answer5Correct,answer5,answer6Correct,answer6};
 
-    dispatch(addQuestion({id: uid, ...question}));
-    // return database.ref(`users/${uid}/expenses`).push(expense).then((ref) => {
-    //   dispatch(addExpense({
-    //     id: ref.key,
-    //     ...expense
-    //   }));
-    // });
-  };
-};
-
-// REMOVE_EXPENSE
-export const removeExpense = ({ id } = {}) => ({
-  type: 'REMOVE_EXPENSE',
-  id
-});
-
-export const startRemoveExpense = ({ id } = {}) => {
-  return (dispatch, getState) => {
-    const uid = getState().auth.uid
-    return database.ref(`users/${uid}/expenses/${id}`).remove().then(() => {
-      dispatch(removeExpense({ id }));
+    return database.ref(`/questions`).push(questionInput).then((ref) => {
+      dispatch(addQuestion({
+        id: ref.key,
+        ...questionInput
+      }));
     });
   };
 };
 
-// EDIT_EXPENSE
-export const editExpense = (id, updates) => ({
-  type: 'EDIT_EXPENSE',
+// REMOVE_QUESTION
+export const removeQuestion = ({ id } = {}) => ({
+  type: 'REMOVE_QUESTION',
+  id
+});
+
+export const startRemoveQuestion = ({ id } = {}) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid
+    return database.ref(`/questions/${id}`).remove().then(() => {
+      dispatch(removeQuestion({ id }));
+    });
+  };
+};
+
+// EDIT_QUESTION
+export const editQuestion = (id, updates) => ({
+  type: 'EDIT_QUESTION',
   id,
   updates
 });
 
-export const startEditExpense = (id, updates) => {
+export const startEditQuestion = (id, updates) => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid
-    return database.ref(`users/${uid}/expenses/${id}`).update(updates).then(() => {
-      dispatch(editExpense (id, updates))
+    return database.ref(`/questions/${id}`).update(updates).then(() => {
+      dispatch(editQuestion (id, updates))
     })
   }
 };
 
-// SET_EXPENSES
-export const setExpenses = (expenses) => ({
-  type: 'SET_EXPENSES',
-  expenses
+// SET_QUESTIONS
+export const setQuestions = (questions) => ({
+  type: 'SET_QUESTIONS',
+  questions
 });
 
-export const startSetExpenses = () => {
+export const startSetQuestions = () => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid
-    return database.ref(`users/${uid}/expenses`).once('value').then((snapshot) => {
-      const expenses = [];
+    return database.ref(`/questions`).once('value').then((snapshot) => {
+      const questions = [];
 
       snapshot.forEach((childSnapshot) => {
-        expenses.push({
+        questions.push({
           id: childSnapshot.key,
           ...childSnapshot.val()
         });
       });
 
-      dispatch(setExpenses(expenses));
+      dispatch(setQuestions(questions));
     });
   };
 };
