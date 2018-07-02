@@ -13,6 +13,7 @@ export const startAddQuestion = (questionData = {}) => {
     const {
       language = '',
       level = 1,
+      category,
       question = '',
       questionType = 'single',
       answer1Correct = false,
@@ -28,7 +29,7 @@ export const startAddQuestion = (questionData = {}) => {
       answer6Correct = false,
       answer6 = ''
     } = questionData;
-    const questionInput = { language,level,question,questionType,answer1Correct,answer1,answer2Correct,answer2,answer3Correct,answer3,answer4Correct,answer4,answer5Correct,answer5,answer6Correct,answer6};
+    const questionInput = { language,level,category,question,questionType,answer1Correct,answer1,answer2Correct,answer2,answer3Correct,answer3,answer4Correct,answer4,answer5Correct,answer5,answer6Correct,answer6};
 
     return database.ref(`/questions`).push(questionInput).then((ref) => {
       dispatch(addQuestion({

@@ -6,6 +6,7 @@ const AdminMenu = () => (
     <div>
       <Link to='/admin/add'>Add Question</Link>
       <Link to='/admin/dashboard'>Admin Dashboard</Link>
+      <Link to='/admin/logout'>Logout</Link>s
     </div>
 );
 

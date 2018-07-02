@@ -7,8 +7,9 @@ export const QuestionList = (props) => (
   <div className='content-container'>
   <div className='list-header'>
     <div className = 'show-for-mobile'>Questions</div>
-    <div className = 'show-for-desktop'>Question</div>
     <div className = 'show-for-desktop'>Level</div>
+    <div className = 'show-for-desktop'>Category</div>
+    <div className = 'show-for-desktop'>Question</div>
   </div>
      <div className="list-body">
     {

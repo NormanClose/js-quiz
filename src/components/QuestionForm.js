@@ -29,6 +29,15 @@ const InnerForm= ({ values, errors, touched, isSubmitting}) => (
             <Field type='radio' name='level' id='3' value='3' checked={values.level ==='3'}/>
           </label>
         </div>
+        <div>
+          <label>
+            Category 
+            <Field component='select' name='category'>
+              <option value='functions'>Functions</option>
+              <option value='reference'>Reference</option>
+            </Field>
+          </label>
+        </div>
         <p>{errors.question}</p>
         <Field
           component = 'textarea'
@@ -131,6 +140,7 @@ const PostForm = withFormik({
   mapPropsToValues({ language,
       question,
       level,
+      category,
       questionType,
       answer1Correct,answer1,
       answer2Correct,answer2,
@@ -141,6 +151,7 @@ const PostForm = withFormik({
     return {
       language : language || '',
       level : level || '1',
+      category : category || '',
       question : question || '',
       questionType : questionType || 'single',
       answer1Correct : answer1Correct || false,
@@ -224,7 +235,7 @@ const PostForm = withFormik({
     }
 
     if (countErrors === 0) {
-      alert('Yay no errors');
+      //alert('Yay no errors');
       resetForm();
     }
 
