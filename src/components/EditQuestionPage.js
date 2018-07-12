@@ -9,7 +9,6 @@ export class EditQuestionPage extends React.Component {
     this.props.history.push('/');
   }
   onRemove = () => {
-    console.log('Question to remove', this.props.question);
     this.props.startRemoveQuestion({id: this.props.question.id});
     this.props.history.push('/');
   }
@@ -32,9 +31,16 @@ export class EditQuestionPage extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  question: state.questions.find((question) => question.id === props.match.params.id)
-})
+const mapStateToProps = (state, props) => {
+  const question = state.questions.find((question) => question.id === props.match.params.id)
+  console.log('question');
+  console.log(question);
+
+  return {
+    question
+  };
+
+}
 
 const mapDispatchToProps = (dispatch) => ({
   startEditQuestion: (id, question) => dispatch(startEditQuestion(id, question)),

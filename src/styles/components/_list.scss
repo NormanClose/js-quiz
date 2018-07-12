@@ -3,8 +3,20 @@
   border: 1px solid darken($off-white, 7%);
   color: $grey;
   display: flex;
-  justify-content: space-between;
+  margin-top: $s-size;
   padding: $s-size $m-size;
+}
+
+.list-header__title--1of3 {
+    flex: 10%;
+}
+
+.list-header__title--2of3 {
+    flex: 40%;
+}
+
+.list-header__title--3of3 {
+    flex: 50%;
 }
 
 .list-body {
@@ -20,7 +32,7 @@
   color: $dark-grey;
   display: flex;
   flex-direction: column;
-  padding: $s-size;
+  padding: 0;
   text-decoration: none;
   transition: background .3s ease;
   &:hover {
@@ -29,8 +41,8 @@
   @media (min-width: $desktop-breakpoint) {
     align-items: center;
     flex-direction: row;
-    justify-content: space-between;
-    padding: $m-size;
+    padding-left: $s-size;
+    padding-bottom: $s-size;
   }
 }
 
@@ -57,7 +69,25 @@
 .list-item__data {
   margin: $s-size 0 0 0;
   @media (min-width: $desktop-breakpoint) {
-    margin: 0;
-    padding-left: $s-size;
+    // margin: 0;
+    // padding-left: $s-size;
+  }
+}
+
+.list-item__data--1of3 {
+  @media (min-width: $desktop-breakpoint) {
+    flex: 10%
+  }
+}
+
+.list-item__data--2of3 {
+  @media (min-width: $desktop-breakpoint) {
+    flex: 40%
+  }
+}
+
+.list-item__data--3of3 {
+  @media (min-width: $desktop-breakpoint) {
+    flex: 50%
   }
 }

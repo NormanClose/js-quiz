@@ -1,0 +1,5 @@
+Category 
+            <Field component='select' name='category' className='select'>
+              <option value='functions'>Functions</option>
+              <option value='variables'>Variables</option>
+            </Field>

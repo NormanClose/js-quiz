@@ -1,0 +1,13 @@
+.menu {
+  background: $dark-grey;
+}
+
+.menu__content {
+  align-items: center;
+  display: flex;
+}
+
+.menu__title {
+  color: white;
+  text-decoration: none;
+}

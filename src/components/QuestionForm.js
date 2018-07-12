@@ -1,53 +1,54 @@
 import React from 'react';
+import SelectBox from './SelectBox';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup'; //Note change with V0.25
 
 const InnerForm= ({ values, errors, touched, isSubmitting}) => (
   <div>
-    <Form>
+    <Form className='form'>
       <div>
         <div>
-          <label>
+          <label className='label'>
             Language 
-            <Field component='select' name='language'>
+            <Field component='select' name='language' className='select'>
               <option value='javascript'>Javascript</option>
               <option value='typescript'>Typescript</option>
             </Field>
           </label>
         </div>
-        <div>
-          <label>
+        <div className='radio-group'>
+          <label className='tick-container'>
             Level 1
-            <Field type='radio' name='level' id='1' value='1' checked={values.level ==='1'}/>
+            <Field type='radio' name='level' id='1' value='1' checked={values.level ==='1'} />
+            <span className='radio-checkmark'></span>
           </label>
-          <label>
+          <label className='tick-container'>
             Level 2
-            <Field type='radio' name='level' id='2' value='2' checked={values.level ==='2'}/>
+            <Field type='radio' name='level' id='2' value='2' checked={values.level ==='2'} />
+            <span className='radio-checkmark'></span>
           </label>
-          <label>
+          <label className='tick-container'>
             Level 3
-            <Field type='radio' name='level' id='3' value='3' checked={values.level ==='3'}/>
+            <Field type='radio' name='level' id='3' value='3' checked={values.level ==='3'} />
+            <span className='radio-checkmark'></span>
           </label>
         </div>
         <div>
-          <label>
-            Category 
-            <Field component='select' name='category'>
-              <option value='functions'>Functions</option>
-              <option value='reference'>Reference</option>
-            </Field>
+          <label className='label'>
+            <SelectBox categories={values.categories} />
           </label>
         </div>
         <p>{errors.question}</p>
         <Field
           component = 'textarea'
+          className = 'textarea'
           name='question'
           placeholder='Question'
         />
         <div>
-          <label>
+          <label className='label'>
             Question Type 
-            <Field component='select' name='questionType'>
+            <Field component='select' name='questionType' className='select'>
               <option value='single'>Only one correct answer</option>
               <option value='multi'>More than one correct</option>
             </Field>
@@ -56,80 +57,92 @@ const InnerForm= ({ values, errors, touched, isSubmitting}) => (
         <p>{errors.overall}</p>
         <div>
           <p>{errors.answer1Correct}</p>
-          <label>
+          <label className='tick-container'>
             Answer 1 Correct
             <Field type='checkbox' name='answer1Correct'/>
+            <span className='box-checkmark'></span>
           </label>
         </div>
         <p>{errors.answer1}</p>
         <Field
           component = 'textarea'
+          className = 'textarea'
           name='answer1'
           placeholder='Answer 1'
         />
         <div>
-          <p>{errors.answer2Correct}</p>
-          <label>
+          <label className='tick-container'>
             Answer 2 Correct
             <Field type='checkbox' name='answer2Correct'/>
+            <span className='box-checkmark'></span>
           </label>
         </div>
+        <p>{errors.answer2Correct}</p>
         <Field
           component = 'textarea'
+          className = 'textarea'
           name='answer2'
           placeholder='Answer 2'
         />
         <div>
-          <p>{errors.answer3Correct}</p>
-          <label>
+          <label className='tick-container'>
             Answer 3 Correct
             <Field type='checkbox' name='answer3Correct'/>
+            <span className='box-checkmark'></span>
           </label>
         </div>
+        <p>{errors.answer3Correct}</p>
         <Field
           component = 'textarea'
+          className = 'textarea'
           name='answer3'
           placeholder='Answer 3'
         />
         <div>
-          <p>{errors.answer4Correct}</p>
-          <label>
+          <label className='tick-container'>
             Answer 4 Correct
             <Field type='checkbox' name='answer4Correct'/>
+            <span className='box-checkmark'></span>
           </label>
         </div>
+        <p>{errors.answer4Correct}</p>
         <Field
           component = 'textarea'
+          className = 'textarea'
           name='answer4'
           placeholder='Answer 4'
         />
         <div>
-          <p>{errors.answer5Correct}</p>
-          <label>
+          <label className='tick-container'>
             Answer 5 Correct
             <Field type='checkbox' name='answer5Correct'/>
+            <span className='box-checkmark'></span>
           </label>
         </div>
+        <p>{errors.answer5Correct}</p>
         <Field
           component = 'textarea'
+          className = 'textarea'
           name='answer5'
           placeholder='Answer 5'
         />
         <div>
-          <p>{errors.answer6Correct}</p>
-          <label>
+          <label className='tick-container'>
             Answer 6 Correct
             <Field type='checkbox' name='answer6Correct'/>
+            <span className='box-checkmark'></span>
           </label>
         </div>
+        <p>{errors.answer6Correct}</p>
         <Field
           component = 'textarea'
+          className = 'textarea'
           name='answer6'
           placeholder='Answer 6'
         />
         
       </div>
-      <button disabled={isSubmitting}>
+      <button disabled={isSubmitting} className='button button--form'>
         Submit
       </button>
     </Form>
@@ -137,35 +150,26 @@ const InnerForm= ({ values, errors, touched, isSubmitting}) => (
 )
 
 const PostForm = withFormik({
-  mapPropsToValues({ language,
-      question,
-      level,
-      category,
-      questionType,
-      answer1Correct,answer1,
-      answer2Correct,answer2,
-      answer3Correct,answer3,
-      answer4Correct,answer4,
-      answer5Correct,answer5,
-      answer6Correct,answer6}) {
+  mapPropsToValues: props => {
     return {
-      language : language || '',
-      level : level || '1',
-      category : category || '',
-      question : question || '',
-      questionType : questionType || 'single',
-      answer1Correct : answer1Correct || false,
-      answer1 : answer1 || '',
-      answer2Correct : answer2Correct || false,
-      answer2 : answer2 || '',
-      answer3Correct : answer3Correct || false,
-      answer3 : answer3 || '',
-      answer4Correct : answer4Correct || false,
-      answer4 : answer4 || '',
-      answer5Correct : answer5Correct || false,
-      answer5 : answer5 || '',
-      answer6Correct : answer6Correct || false,
-      answer6 : answer6 || ''
+      language : props.question.language || '',
+      level : props.question.level || '1',
+      category : props.question.category || '',
+      question : props.question.question || '',
+      questionType : props.question.questionType || 'single',
+      answer1Correct : props.question.answer1Correct || false,
+      answer1 : props.question.answer1 || '',
+      answer2Correct : props.question.answer2Correct || false,
+      answer2 : props.question.answer2 || '',
+      answer3Correct : props.question.answer3Correct || false,
+      answer3 : props.question.answer3 || '',
+      answer4Correct : props.question.answer4Correct || false,
+      answer4 : props.question.answer4 || '',
+      answer5Correct : props.question.answer5Correct || false,
+      answer5 : props.question.answer5 || '',
+      answer6Correct : props.question.answer6Correct || false,
+      answer6 : props.question.answer6 || '',
+      categories : props.categories
     };
   },
   // validationSchema: Yup.object().shape({
