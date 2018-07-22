@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import QuestionListItem from './QuestionListItem';
-//import selectQuestions from '../selectors/questions';
+import selectQuestions from '../selectors/questions';
 
 export const QuestionList = (props) => (
   <div>
@@ -27,8 +27,9 @@ export const QuestionList = (props) => (
 
 const mapStateToProps = (state) => {
   return {
-    questions: state.questions
+    questions: selectQuestions(state.questions, state.filters)
   };
+
 };
 
 export default connect(mapStateToProps)(QuestionList);

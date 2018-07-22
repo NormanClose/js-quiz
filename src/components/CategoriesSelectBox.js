@@ -1,29 +1,32 @@
 import React from 'react';
 
-// a select with dynamically created options
+// A Select with dynamically created options
 // React Select Box - https://codepen.io/blehr/pen/pbjNGR
 
 export default class SelectBox extends React.Component {
   constructor(props) {
     super(props);
     
+    console.log('value', props.category);
+
     this.state = 
     { 
-      value: 'Select an Option',
-      categories: props.categories
+      category: props.category,
+      categories: props.categories,
+      onCategoryChange: props.onCategoryChange
     };
 
   }
-  onChange(e) {
-    this.setState({
-      value: e.target.value
-    })
+  onCategoryChange(e) {
+    // this.setState({
+    //   value: e.target.value
+    // })
+    this.state.onCategoryChange(e.target.value);
   }
   render() {
     return (
       <div>
-        <label htmlFor="Category" >Category</label>
-        <select value={this.state.value} onChange={this.onChange.bind(this)} >
+        <select value={this.state.value} onChange={this.onCategoryChange.bind(this)} >
           {this.state.categories.map(option => {
             return <option value={option.category} key={option.category} >{option.category}</option>
           })}

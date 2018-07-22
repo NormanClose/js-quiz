@@ -1,5 +1,5 @@
 import React from 'react';
-import SelectBox from './SelectBox';
+import CategoriesSelectBox from './CategoriesSelectBox';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup'; //Note change with V0.25
 
@@ -35,7 +35,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting}) => (
         </div>
         <div>
           <label className='label'>
-            <SelectBox categories={values.categories} />
+            <CategoriesSelectBox categories={values.categories} />
           </label>
         </div>
         <p>{errors.question}</p>

@@ -1,10 +1,10 @@
 // Filters Reducer
 
 const filtersReducerDefaultState = {
-  level: 'All',
-  category: 'All Cats'
+  level: '',
+  category: ''
 };
-
+//SET_CATEGORY_FILTER
 export default (state = filtersReducerDefaultState, action) => {
   switch (action.type) {
     case 'SET_LEVEL_FILTER':
@@ -12,7 +12,7 @@ export default (state = filtersReducerDefaultState, action) => {
         ...state,
         level: action.level
       };
-    case 'SET CATEGORY_FILTER':
+    case 'SET_CATEGORY_FILTER':
       return {
         ...state,
         category: action.category
