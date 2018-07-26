@@ -5,8 +5,8 @@ import { startEditQuestion, startRemoveQuestion } from '../actions/questions';
 
 export class EditQuestionPage extends React.Component {
   onSubmit = (question) => {
-    this.props.startAddQuestion(this.props.question.id, question);
-    this.props.history.push('/');
+    this.props.startEditQuestion(this.props.question.id, question);
+    this.props.history.push('/admin/question');
   }
   onRemove = () => {
     this.props.startRemoveQuestion({id: this.props.question.id});
@@ -21,6 +21,7 @@ export class EditQuestionPage extends React.Component {
         <QuestionForm
           question={this.props.question}
           onSubmit={this.onSubmit}
+          categories={this.props.categories}
         />
         <button 
           className='button button--secondary' 
@@ -37,7 +38,8 @@ const mapStateToProps = (state, props) => {
   console.log(question);
 
   return {
-    question
+    question,
+    categories: state.categories
   };
 
 }

@@ -28,7 +28,7 @@ export class QuestionListFilters extends React.Component {
             <CategoriesSelectBox 
               categories={this.props.categories} 
               onCategoryChange={this.onCategoryChange}
-              value={this.props.filters.category}
+              value={this.props.filters.value}
             />
           </div>
           <div className='input-group__item'>

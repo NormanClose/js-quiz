@@ -1,9 +1,9 @@
 import React from 'react';
-import CategoriesSelectBox from './CategoriesSelectBox';
+import CategoriesFormSelectBox from './CategoriesFormSelectBox';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup'; //Note change with V0.25
 
-const InnerForm= ({ values, errors, touched, isSubmitting}) => (
+const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handleChange}) => (
   <div>
     <Form className='form'>
       <div>
@@ -35,7 +35,11 @@ const InnerForm= ({ values, errors, touched, isSubmitting}) => (
         </div>
         <div>
           <label className='label'>
-            <CategoriesSelectBox categories={values.categories} />
+            <CategoriesFormSelectBox 
+              categories={values.categories} 
+              onChange={setFieldValue}
+              value={values.category}
+            />
           </label>
         </div>
         <p>{errors.question}</p>

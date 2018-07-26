@@ -3,26 +3,29 @@ import React from 'react';
 // A Select with dynamically created options
 // React Select Box - https://codepen.io/blehr/pen/pbjNGR
 
-// NOTE: User a different select for look ups
-// as no validation
+// NOTE: Also includes validation as called from Form
 
 export default class SelectBox extends React.Component {
+
   constructor(props) {
     super(props);
 
     this.state = 
     { 
-      onCategoryChange: props.onCategoryChange
+      onChange: props.handleChange
     };
-
   }
-  onCategoryChange(e) {
-    this.state.onCategoryChange(e.target.value);
+  
+  handleChange(e) {
+    // this is going to call setFieldValue and manually update values.category
+    //console.log('category', e.target.value);
+    this.state.value = e.target.value;
+    this.props.onChange('category', e.target.value);
   }
   render() {
     return (
       <div>
-        <select value={this.props.value} onChange={this.onCategoryChange.bind(this)} name='category' >
+        <select value={this.props.value} onChange={this.handleChange.bind(this)} name='category' >
           {this.props.categories.map(option => {
             return <option value={option.category} key={option.category} >{option.category}</option>
           })}

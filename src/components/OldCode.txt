@@ -1,0 +1,16 @@
+            <CategoriesSelectBox 
+              categories={values.categories} 
+              onCategoryChange={handleChange}
+              value={values.category}
+            />
+
+
+            <select
+              name='category'
+              value={values.category}
+              onChange={handleChange}
+            >
+              <option value='Loops'>Loops</option>
+              <option value='Blocks'>Blocks</option>
+              <option value='Functions'>Functions</option>
+            </select>
