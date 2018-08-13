@@ -21,10 +21,9 @@ export class QuestionListFilters extends React.Component {
 
   render() {
     return (
-      <div className='content-container'>
+      <div className='content-container content-container--left'>
         <div className='input-group'>
-          
-          <div>
+          <div className='input-group__item'>
             <CategoriesSelectBox 
               categories={this.props.categories} 
               onCategoryChange={this.onCategoryChange}

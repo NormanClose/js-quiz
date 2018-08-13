@@ -22,7 +22,7 @@ export default class SelectBox extends React.Component {
   render() {
     return (
       <div>
-        <select value={this.props.value} onChange={this.onCategoryChange.bind(this)} name='category' >
+        <select value={this.props.value} onChange={this.onCategoryChange.bind(this)} name='category' className = 'select select--left'>
           {this.props.categories.map(option => {
             return <option value={option.category} key={option.category} >{option.category}</option>
           })}

@@ -8,6 +8,13 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
     <Form className='form'>
       <div>
         <div>
+          <button disabled={isSubmitting} className='button button--form'>
+          Submit
+          </button>
+        </div>
+        <div className='spacer--med'>
+        </div>
+        <div>
           <label className='label'>
             Language 
             <Field component='select' name='language' className='select'>
@@ -144,7 +151,6 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
           name='answer6'
           placeholder='Answer 6'
         />
-        
       </div>
       <button disabled={isSubmitting} className='button button--form'>
         Submit

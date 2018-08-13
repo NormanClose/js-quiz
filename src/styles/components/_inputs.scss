@@ -22,6 +22,10 @@
   margin-bottom: 0;
 }
 
+.select--left {
+  margin-left: 0;
+}
+
 .radio {
   @extend .text-input;
 }

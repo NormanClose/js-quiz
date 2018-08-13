@@ -18,7 +18,6 @@ export default class SelectBox extends React.Component {
   
   handleChange(e) {
     // this is going to call setFieldValue and manually update values.category
-    //console.log('category', e.target.value);
     this.state.value = e.target.value;
     this.props.onChange('category', e.target.value);
   }
