@@ -34,8 +34,6 @@ export class EditQuestionPage extends React.Component {
 
 const mapStateToProps = (state, props) => {
   const question = state.questions.find((question) => question.id === props.match.params.id)
-  console.log('question');
-  console.log(question);
 
   return {
     question,

@@ -58,7 +58,7 @@ const mapStateToProps = (state) => {
   if (found === undefined) {
     allCategories.unshift({id:1, category:'All Categories'});
   }
-  console.log('allCats', allCategories);
+
   return {
   filters: state.filters,
   categories: allCategories

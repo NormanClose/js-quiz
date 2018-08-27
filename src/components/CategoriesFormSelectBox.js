@@ -23,13 +23,11 @@ export default class SelectBox extends React.Component {
   }
   render() {
     return (
-      <div>
-        <select value={this.props.value} onChange={this.handleChange.bind(this)} name='category' >
+        <select value={this.props.value} onChange={this.handleChange.bind(this)} name='category' className = 'select' >
           {this.props.categories.map(option => {
             return <option value={option.category} key={option.category} >{option.category}</option>
           })}
         </select>
-      </div>
     )
   }
 }

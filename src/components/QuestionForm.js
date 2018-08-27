@@ -42,6 +42,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
         </div>
         <div>
           <label className='label'>
+            Category
             <CategoriesFormSelectBox 
               categories={values.categories} 
               onChange={setFieldValue}
@@ -49,7 +50,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
             />
           </label>
         </div>
-        <p>{errors.question}</p>
+        <p className='error'>{errors.question}</p>
         <Field
           component = 'textarea'
           className = 'textarea'
@@ -65,7 +66,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
             </Field>
           </label>
         </div>
-        <p>{errors.overall}</p>
+        <p className='error'>{errors.overall}</p>
         <div>
           <p>{errors.answer1Correct}</p>
           <label className='tick-container'>
@@ -74,7 +75,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
             <span className='box-checkmark'></span>
           </label>
         </div>
-        <p>{errors.answer1}</p>
+        <p className='error'>{errors.answer1}</p>
         <Field
           component = 'textarea'
           className = 'textarea'
@@ -88,7 +89,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
             <span className='box-checkmark'></span>
           </label>
         </div>
-        <p>{errors.answer2Correct}</p>
+        <p className='error'>{errors.answer2Correct}</p>
         <Field
           component = 'textarea'
           className = 'textarea'
@@ -102,7 +103,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
             <span className='box-checkmark'></span>
           </label>
         </div>
-        <p>{errors.answer3Correct}</p>
+        <p className='error'>{errors.answer3Correct}</p>
         <Field
           component = 'textarea'
           className = 'textarea'
@@ -116,7 +117,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
             <span className='box-checkmark'></span>
           </label>
         </div>
-        <p>{errors.answer4Correct}</p>
+        <p className='error'>{errors.answer4Correct}</p>
         <Field
           component = 'textarea'
           className = 'textarea'
@@ -130,7 +131,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
             <span className='box-checkmark'></span>
           </label>
         </div>
-        <p>{errors.answer5Correct}</p>
+        <p className='error'>{errors.answer5Correct}</p>
         <Field
           component = 'textarea'
           className = 'textarea'
@@ -144,7 +145,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
             <span className='box-checkmark'></span>
           </label>
         </div>
-        <p>{errors.answer6Correct}</p>
+        <p className='error'>{errors.answer6Correct}</p>
         <Field
           component = 'textarea'
           className = 'textarea'
@@ -182,10 +183,10 @@ const PostForm = withFormik({
       categories : props.categories
     };
   },
-  // validationSchema: Yup.object().shape({
-  //   question: Yup.string().min(5, 'Question must be 5 characters or longer').required('Question is required'),
-  //   answer1: Yup.string().min(5, 'Answer 1 must be 5 characters or longer').required('Answer 1 is required')
-  // }),
+  validationSchema: Yup.object().shape({
+    question: Yup.string().min(5, 'Question must be 5 characters or longer').required('Question is required'),
+    answer1: Yup.string().min(5, 'Answer 1 must be 5 characters or longer').required('Answer 1 is required')
+  }),
   handleSubmit: (values, { resetForm, setErrors, setSubmitting, props }) => {
 
     console.log(values);
@@ -203,8 +204,6 @@ const PostForm = withFormik({
       countQuestionsCorrect++;}
     if(values.answer6Correct) {
       countQuestionsCorrect++;}
-
-    //alert('countQuestionsCorrect' + countQuestionsCorrect )
 
     let countErrors = 0;
 

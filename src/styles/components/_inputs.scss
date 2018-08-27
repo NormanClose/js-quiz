@@ -26,8 +26,18 @@
   margin-left: 0;
 }
 
+.select--trim {
+  margin-top: $s-size;
+  margin-left: 0;
+  margin-bottom: 0; 
+}
+
 .radio {
   @extend .text-input;
+}
+
+.error {
+  color: red;
 }
 
 .textarea {
