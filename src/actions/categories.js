@@ -41,7 +41,6 @@ export const startSetCategories = () => {
           ...childSnapshot.val()
         });
       });
-      console.log('categories', categories);
       dispatch(setCategories(categories));
     });
   };

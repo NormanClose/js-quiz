@@ -9,6 +9,8 @@ export class QuestionListFilters extends React.Component {
   };
 
   onCategoryChange = (category) => {
+    console.log('this.props.categories');
+    console.log(this.props.categories);
     if (category==='All Categories') {
       this.props.setCategoryFilter('');
     } else {
@@ -48,22 +50,10 @@ export class QuestionListFilters extends React.Component {
   }
 };
 
-const mapStateToProps = (state) => {
-
-  let allCategories = state.categories;
-
-  var found = allCategories.find(function(element) {
-    return element.category === 'All Categories'
-  });
-  if (found === undefined) {
-    allCategories.unshift({id:1, category:'All Categories'});
-  }
-
-  return {
-  filters: state.filters,
-  categories: allCategories
-  }
-};
+const mapStateToProps = (state) => ({
+    filters: state.filters,
+    categories: state.categories
+});
 
 const mapDispatchToProps = (dispatch) => ({
   setCategoryFilter: (category) => dispatch(setCategoryFilter(category)),
