@@ -189,7 +189,7 @@ const PostForm = withFormik({
   }),
   handleSubmit: (values, { resetForm, setErrors, setSubmitting, props }) => {
 
-    console.log(values);
+    console.log('values',values);
       
     let countQuestionsCorrect = 0;
     if(values.answer1Correct) {
@@ -206,6 +206,7 @@ const PostForm = withFormik({
       countQuestionsCorrect++;}
 
     let countErrors = 0;
+    console.log('counterrors', countErrors);
 
     if (values.answer1Correct && !values.answer1) {
       countErrors++;
@@ -232,6 +233,8 @@ const PostForm = withFormik({
       setErrors({answer6Correct: 'If answer is correct then need answer filled in' });
     }
 
+console.log('questionType', values.questionType);
+
     if (values.questionType === 'single') {
       if(countQuestionsCorrect === 0) {
         countErrors++;
@@ -248,11 +251,14 @@ const PostForm = withFormik({
     }
 
     if (countErrors === 0) {
-      //alert('Yay no errors');
+      alert('Yay no errors');
       resetForm();
+    } else {
+      alert('errors');
+      setSubmitting(false);
+      return;
     }
 
-    setSubmitting(false);
     props.onSubmit(values);
   }
 })(InnerForm);
