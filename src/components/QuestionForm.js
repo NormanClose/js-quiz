@@ -19,7 +19,6 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
             Language 
             <Field component='select' name='language' className='select'>
               <option value='javascript'>Javascript</option>
-              <option value='typescript'>Typescript</option>
             </Field>
           </label>
         </div>
@@ -189,8 +188,6 @@ const PostForm = withFormik({
   }),
   handleSubmit: (values, { resetForm, setErrors, setSubmitting, props }) => {
 
-    console.log('values',values);
-      
     let countQuestionsCorrect = 0;
     if(values.answer1Correct) {
       countQuestionsCorrect++;}
@@ -206,7 +203,6 @@ const PostForm = withFormik({
       countQuestionsCorrect++;}
 
     let countErrors = 0;
-    console.log('counterrors', countErrors);
 
     if (values.answer1Correct && !values.answer1) {
       countErrors++;
@@ -233,8 +229,6 @@ const PostForm = withFormik({
       setErrors({answer6Correct: 'If answer is correct then need answer filled in' });
     }
 
-console.log('questionType', values.questionType);
-
     if (values.questionType === 'single') {
       if(countQuestionsCorrect === 0) {
         countErrors++;
@@ -244,17 +238,15 @@ console.log('questionType', values.questionType);
         setErrors({overall : 'Only one answer can be correct'});
       }
     } else if (values.questionType === 'multi') {
-      if(countQuestionsCorrect === 0) {
+      if(countQuestionsCorrect < 2) {
         countErrors++;
-        setErrors({overall: 'At least one answer must be marked as correct' });
+        setErrors({overall: 'You have selected \'More than one correct\' - Mark more than one answer as correct' });
       }
     }
 
     if (countErrors === 0) {
-      alert('Yay no errors');
       resetForm();
     } else {
-      alert('errors');
       setSubmitting(false);
       return;
     }
