@@ -10,17 +10,21 @@ export class EditQuestionPage extends React.Component {
   }
   onRemove = () => {
     this.props.startRemoveQuestion({id: this.props.question.id});
-    this.props.history.push('/');
+    this.props.history.push('/admin/question');
+  }
+  onCancel = () => {
+    this.props.history.push('/admin/question');
   }
   render() {
     return (
-      <div>
+      <div  className='content-container'>
         <h1>
           Edit Question
         </h1>
         <QuestionForm
           question={this.props.question}
           onSubmit={this.onSubmit}
+          onCancel={this.onCancel}
           categories={this.props.categories}
         />
         <button 

@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render QuestionForm correctly 1`] = `
+<Formik
+  categories={
+    Array [
+      Object {
+        "category": "Value",
+        "id": "1",
+      },
+      Object {
+        "category": "Reference",
+        "id": "2",
+      },
+      Object {
+        "category": "Function",
+        "id": "3",
+      },
+    ]
+  }
+  enableReinitialize={false}
+  handleSubmit={[Function]}
+  initialValues={
+    Object {
+      "answer1": "",
+      "answer1Correct": false,
+      "answer2": "",
+      "answer2Correct": false,
+      "answer3": "",
+      "answer3Correct": false,
+      "answer4": "",
+      "answer4Correct": false,
+      "answer5": "",
+      "answer5Correct": false,
+      "answer6": "",
+      "answer6Correct": false,
+      "categories": Array [
+        Object {
+          "category": "Value",
+          "id": "1",
+        },
+        Object {
+          "category": "Reference",
+          "id": "2",
+        },
+        Object {
+          "category": "Function",
+          "id": "3",
+        },
+      ],
+      "category": "",
+      "language": "",
+      "level": "1",
+      "question": "",
+      "questionType": "single",
+    }
+  }
+  isInitialValid={false}
+  onSubmit={[Function]}
+  question={Object {}}
+  render={[Function]}
+  validateOnBlur={true}
+  validateOnChange={true}
+  validationSchema={[Function]}
+/>
+`;
+
+exports[`should render QuestionForm correctly with question data 1`] = `
+<Formik
+  categories={
+    Array [
+      Object {
+        "category": "Value",
+        "id": "1",
+      },
+      Object {
+        "category": "Reference",
+        "id": "2",
+      },
+      Object {
+        "category": "Function",
+        "id": "3",
+      },
+    ]
+  }
+  enableReinitialize={false}
+  handleSubmit={[Function]}
+  initialValues={
+    Object {
+      "answer1": "Variables are good",
+      "answer1Correct": true,
+      "answer2": "",
+      "answer2Correct": false,
+      "answer3": "",
+      "answer3Correct": false,
+      "answer4": "",
+      "answer4Correct": false,
+      "answer5": "",
+      "answer5Correct": false,
+      "answer6": "",
+      "answer6Correct": false,
+      "categories": Array [
+        Object {
+          "category": "Value",
+          "id": "1",
+        },
+        Object {
+          "category": "Reference",
+          "id": "2",
+        },
+        Object {
+          "category": "Function",
+          "id": "3",
+        },
+      ],
+      "category": "Variables",
+      "language": "",
+      "level": "3",
+      "question": "Test Variables",
+      "questionType": "single",
+    }
+  }
+  isInitialValid={false}
+  onSubmit={[Function]}
+  question={
+    Object {
+      "answer1": "Variables are good",
+      "answer1Correct": true,
+      "answer2": "",
+      "answer2Correct": false,
+      "answer3": "",
+      "answer3Correct": false,
+      "answer4": "",
+      "answer4Correct": false,
+      "answer5": "",
+      "answer5Correct": false,
+      "answer6": "",
+      "answer6Correct": false,
+      "category": "Variables",
+      "language": "",
+      "level": "3",
+      "question": "Test Variables",
+      "questionType": "single",
+    }
+  }
+  render={[Function]}
+  validateOnBlur={true}
+  validateOnChange={true}
+  validationSchema={[Function]}
+/>
+`;

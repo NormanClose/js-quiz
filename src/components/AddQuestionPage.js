@@ -9,6 +9,9 @@ export class AddQuestionPage extends React.Component {
     this.props.startAddQuestion(question);
     this.props.history.push('/admin/question');
   }
+  onCancel = () => {
+    this.props.history.push('/admin/question');
+  }
   render() {
     return (
       <div className='content-container'>
@@ -19,6 +22,7 @@ export class AddQuestionPage extends React.Component {
         <QuestionForm
           question={{}}
           onSubmit={this.onSubmit}
+          onCancel={this.onCancel}
           categories={this.props.categories}
         />
       </div>

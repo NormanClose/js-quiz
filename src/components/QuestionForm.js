@@ -3,7 +3,7 @@ import CategoriesFormSelectBox from './CategoriesFormSelectBox';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup'; //Note change with V0.25
 
-const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handleChange}) => (
+const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handleChange, onCancel}) => (
   <div>
     <Form className='form'>
       <div>
@@ -70,7 +70,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
           <p>{errors.answer1Correct}</p>
           <label className='tick-container'>
             Answer 1 Correct
-            <Field type='checkbox' name='answer1Correct'/>
+            <Field type='checkbox' name='answer1Correct' checked={values.answer1Correct === true}/>
             <span className='box-checkmark'></span>
           </label>
         </div>
@@ -84,7 +84,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
         <div>
           <label className='tick-container'>
             Answer 2 Correct
-            <Field type='checkbox' name='answer2Correct'/>
+            <Field type='checkbox' name='answer2Correct' checked={values.answer2Correct === true}/>
             <span className='box-checkmark'></span>
           </label>
         </div>
@@ -98,7 +98,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
         <div>
           <label className='tick-container'>
             Answer 3 Correct
-            <Field type='checkbox' name='answer3Correct'/>
+            <Field type='checkbox' name='answer3Correct' checked={values.answer3Correct === true}/>
             <span className='box-checkmark'></span>
           </label>
         </div>
@@ -112,7 +112,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
         <div>
           <label className='tick-container'>
             Answer 4 Correct
-            <Field type='checkbox' name='answer4Correct'/>
+            <Field type='checkbox' name='answer4Correct' checked={values.answer4Correct === true}/>
             <span className='box-checkmark'></span>
           </label>
         </div>
@@ -126,7 +126,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
         <div>
           <label className='tick-container'>
             Answer 5 Correct
-            <Field type='checkbox' name='answer5Correct'/>
+            <Field type='checkbox' name='answer5Correct' checked={values.answer5Correct === true}/>
             <span className='box-checkmark'></span>
           </label>
         </div>
@@ -140,7 +140,7 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
         <div>
           <label className='tick-container'>
             Answer 6 Correct
-            <Field type='checkbox' name='answer6Correct'/>
+            <Field type='checkbox' name='answer6Correct' checked={values.answer6Correct === true}/>
             <span className='box-checkmark'></span>
           </label>
         </div>
@@ -152,8 +152,11 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
           placeholder='Answer 6'
         />
       </div>
-      <button disabled={isSubmitting} className='button button--form'>
+      <button type='submit' disabled={isSubmitting} className='button button--form'>
         Submit
+      </button>
+      <button type='button' disabled={isSubmitting} onClick={onCancel}>
+        Cancel
       </button>
     </Form>
   </div>
@@ -186,6 +189,9 @@ const PostForm = withFormik({
     question: Yup.string().min(5, 'Question must be 5 characters or longer').required('Question is required'),
     answer1: Yup.string().min(5, 'Answer 1 must be 5 characters or longer').required('Answer 1 is required')
   }),
+  handleCancel: () => {
+    props.onCancel();
+  },
   handleSubmit: (values, { resetForm, setErrors, setSubmitting, props }) => {
 
     let countQuestionsCorrect = 0;
