@@ -11,6 +11,9 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
           <button disabled={isSubmitting} className='button button--form'>
           Submit
           </button>
+          <button type='button' disabled={isSubmitting} onClick={onCancel} className='button button--link'>
+          Cancel
+        </button>
         </div>
         <div className='spacer--med'>
         </div>
@@ -151,13 +154,26 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
           name='answer6'
           placeholder='Answer 6'
         />
+        <div>
+          <label className='label'>
+            As required provide useful information about the correct answer
+          </label>
+        </div>
+        <Field
+          component = 'textarea'
+          className = 'textarea'
+          name='answerExplanation'
+          placeholder='Answer Explanation'
+        />
       </div>
+      <div>
       <button type='submit' disabled={isSubmitting} className='button button--form'>
         Submit
       </button>
-      <button type='button' disabled={isSubmitting} onClick={onCancel}>
+      <button type='button' disabled={isSubmitting} onClick={onCancel} className='button button--link'>
         Cancel
       </button>
+      </div>
     </Form>
   </div>
 )
@@ -182,6 +198,7 @@ const PostForm = withFormik({
       answer5 : props.question.answer5 || '',
       answer6Correct : props.question.answer6Correct || false,
       answer6 : props.question.answer6 || '',
+      answerExplanation : props.question.answerExplanation || '',
       categories : props.categories
     };
   },

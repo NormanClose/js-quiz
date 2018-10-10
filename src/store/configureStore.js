@@ -4,6 +4,8 @@ import authReducer from '../reducers/auth';
 import questionsReducer from '../reducers/questions';
 import categoriesReducer from '../reducers/categories';
 import filtersReducer from '../reducers/filters';
+import quizStateReducer from '../reducers/quizState';
+import quizQuestionsReducer from '../reducers/quizQuestions';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -13,7 +15,9 @@ export default () => {
       questions: questionsReducer,
       auth: authReducer,
       categories: categoriesReducer,
-      filters: filtersReducer
+      filters: filtersReducer,
+      quizState: quizStateReducer,
+      quizQuestions: quizQuestionsReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

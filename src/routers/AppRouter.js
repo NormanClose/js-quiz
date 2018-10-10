@@ -13,6 +13,7 @@ import LoginPage from '../components/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import AddCategoryPage from '../components/AddCategoryPage';
+import StartQuiz from '../components/StartQuiz';
 
 export const history = createHistory();
 
@@ -21,6 +22,7 @@ const AppRouter = () => (
     <div>
       <Switch>
         <PublicRoute path="/" component={LoginPage} exact={true} />
+        <PrivateRoute path="/startQuiz" component={StartQuiz} exact={true} />
         <PrivateRoute path="/dashboard" component={DashboardPage} />
         <PrivateRoute exact path="/admin" component={AdminMenu} />
         <PrivateRoute path="/admin/question/add" component={AddQuestionPage} />

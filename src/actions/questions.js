@@ -27,9 +27,10 @@ export const startAddQuestion = (questionData = {}) => {
       answer5Correct = false,
       answer5 = '',
       answer6Correct = false,
-      answer6 = ''
+      answer6 = '',
+      answerExplanation = ''
     } = questionData;
-    const questionInput = { language,level,category,question,questionType,answer1Correct,answer1,answer2Correct,answer2,answer3Correct,answer3,answer4Correct,answer4,answer5Correct,answer5,answer6Correct,answer6};
+    const questionInput = { language,level,category,question,questionType,answer1Correct,answer1,answer2Correct,answer2,answer3Correct,answer3,answer4Correct,answer4,answer5Correct,answer5,answer6Correct,answer6,answerExplanation};
 
 console.log('user is ' + uid);
 //does not work - ".write": "data.parent().child('admins').child(auth.uid).exists()"
