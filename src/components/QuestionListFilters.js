@@ -9,8 +9,8 @@ export class QuestionListFilters extends React.Component {
   };
 
   onCategoryChange = (category) => {
-    console.log('this.props.categories');
-    console.log(this.props.categories);
+    // console.log('this.props.categories');
+    // console.log(this.props.categories);
     if (category==='All Categories') {
       this.props.setCategoryFilter('');
     } else {

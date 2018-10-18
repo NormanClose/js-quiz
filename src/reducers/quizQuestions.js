@@ -7,7 +7,7 @@ export default (state = quizQuestionsReducerDefaultState, action) => {
     case 'ADD_QUIZ_QUESTION':
       return [
         ...state,
-        action.quizQuestion
+        action.question
       ];
     case 'SET_QUIZ_QUESTIONS':
       return action.quizQuestions;

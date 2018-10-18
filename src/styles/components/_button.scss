@@ -10,6 +10,10 @@
   text-decoration: none;
 }
 
+.button:disabled {
+  background: grey;
+}
+
 .button--link {
   background: none;
   color: blue;
@@ -27,6 +31,10 @@
 
 .button--secondary {
   background: #888;
+}
+
+.button--hidden {
+  display: none;
 }
 
 .button--form {

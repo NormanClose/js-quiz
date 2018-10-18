@@ -9,11 +9,11 @@ const InnerForm= ({ values, errors, touched, isSubmitting, setFieldValue, handle
       <div>
         <div>
           <button disabled={isSubmitting} className='button button--form'>
-          Submit
+            Submit
+            </button>
+            <button type='button' disabled={isSubmitting} onClick={onCancel} className='button button--link'>
+            Cancel
           </button>
-          <button type='button' disabled={isSubmitting} onClick={onCancel} className='button button--link'>
-          Cancel
-        </button>
         </div>
         <div className='spacer--med'>
         </div>

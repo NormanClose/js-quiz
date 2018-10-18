@@ -1,7 +1,7 @@
 // Quiz State Reducer
 
 const quizStateReducerDefaultState = {
-  showAnswers: false,
+  showAnswers: null,
   numberCorrect: 0
 };
 
