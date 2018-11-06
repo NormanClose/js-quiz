@@ -9,12 +9,13 @@ export class QuizForm extends React.Component {
   }
 
   state = {
-    answer1: true,
-    answer2: null,
-    answer3: null,
-    answer4: null,
-    answer5: null,
-    answer6: null
+    radio: 'yes',
+    answer1: false,
+    answer2: false,
+    answer3: false,
+    answer4: false,
+    answer5: false,
+    answer6: false
   }
 
   codeSnippet = (action = 'get') => {
@@ -31,51 +32,92 @@ export class QuizForm extends React.Component {
     }
   };
 
+  //https://techblog.commercetools.com/seven-patterns-by-example-the-many-ways-to-type-radio-in-react-bfe14322bb6f
+//http://react.tips/radio-buttons-in-reactjs/
+  //https://stackoverflow.com/questions/45450285/radio-input-onchange-only-fires-once
   getAnswerInput = (inputType, inputText, checkMarkType, questionNumber) => {
+    // var return false
+    // if (questionNumber === 1) {
+    //   return this.state.answer1
+    // }
+    // if (questionNumber === 2) {
+    //   return this.state.answer2
+    // }
+    // if (questionNumber === 3) {
+    //   return this.state.answer3
+    // }
+    // if (questionNumber === 4) {
+    //   return this.state.answer4
+    // }
+    // if (questionNumber === 5) {
+    //   return this.state.answer5
+    // }
+    // if (questionNumber === 6) {
+    //   return this.state.answer6
+    // }
+    console.log(questionNumber);
     var answer = <div className="tick-container">
-    {inputText + '?'}
-    <input type=' + inputType + ' name="question" checked={true} readOnly/>
+    {inputText}
+    <input type={inputType} name='answerGroup' checked={this.getCheckedState(questionNumber)} onChange={this.onAnswerChange()} value="{questionNumber.toString()}"/>
     <span className={checkMarkType}></span>
     </div>;
     return answer
   }
 
-  onAnswer1Change = (value) => {
-    //alert('checked');
-    this.setState({ answer1: value,});
-  };
-
-  onRadioChange(value) {
-    console.log("radio change");
-    this.setState({
-      radio: value,
-    })
+  getCheckedState = (questionNumber) => {
+    if (questionNumber === 1) {
+      return this.state.answer1
+    }
+    if (questionNumber === 2) {
+      return this.state.answer2
+    }
+    if (questionNumber === 3) {
+      return this.state.answer3
+    }
+    if (questionNumber === 4) {
+      return this.state.answer4
+    }
+    if (questionNumber === 5) {
+      return this.state.answer5
+    }
+    if (questionNumber === 6) {
+      return this.state.answer6
+    }
   }
 
-  onAnswer2Change = (e) => {
-    const checked = e.target.value;
-    this.setState(() => ({ checked }));
+  onAnswerChange = (changeEvent) => {
+    console.log('trigger OnAnswerChange');
+    if (changeEvent === undefined) {
+      return
+    }
+console.log('Here is the changeEvent.target.value')
+    console.log(changeEvent.target.value);
+    //console.log(changeEvent.target.value);
+    // if (questionNumber === 1) {
+    //   this.state.answer1 = true
+    // }
+    // if (questionNumber === 2) {
+    //   this.state.answer2 = true
+    // }
+    // if (questionNumber === 3) {
+    //   this.state.answer3 = true
+    // }
+    // if (questionNumber === 4) {
+    //   this.state.answer4 = true
+    // }
+    // if (questionNumber === 5) {
+    //   this.state.answer5 = true
+    // }
+    // if (questionNumber === 6) {
+    //   this.state.answer6 = true
+    // }
   };
 
-  onAnswer3Change = (e) => {
-    const checked = e.target.value;
-    this.setState(() => ({ checked }));
+  onRadioChange = (yesorno) => {
+    console.log('new radio clicked', yesorno);
   };
 
-  onAnswer4Change = (e) => {
-    const checked = e.target.value;
-    this.setState(() => ({ checked }));
-  };
-
-  onAnswer5Change = (e) => {
-    const checked = e.target.value;
-    this.setState(() => ({ checked }));
-  };
-
-  onAnswer6Change = (e) => {
-    const checked = e.target.value;
-    this.setState(() => ({ checked }));
-  };
+  
 
   render() {
     
@@ -140,6 +182,23 @@ export class QuizForm extends React.Component {
           {answer4}
           {answer5}
           {answer6}
+        </div>
+
+        <div>
+          <input
+            type="radio"
+            value="yes"
+            name="answer"
+            checked={this.state.radio === 'yes'}
+            onChange={(e) => this.onRadioChange('yes')}
+          />
+          <input
+            type="radio"
+            value="no"
+            name="answer"
+            checked={this.state.radio === 'no'}
+            onChange={(e) => this.onRadioChange('no')}
+          />
         </div>
       </form>
     );
