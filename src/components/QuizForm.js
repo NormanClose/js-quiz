@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Prism from 'prismjs';
+import QuizRadioInputLegacy from './QuizRadioInputLegacy';
 import QuizRadioInput from './QuizRadioInput';
 
 export class QuizForm extends React.Component {
@@ -12,15 +13,17 @@ export class QuizForm extends React.Component {
   state = {
     questionType: 'single',
     answer1: false,
-    answer2: false,
+    answer2: true,
     answer3: false,
     answer4: false,
     answer5: false,
     answer6: false
   }
 
-  onRadioChange = (yesorno) => {
-    console.log('onRadionChange');
+  onRadioChange = () => {
+    console.log('Parent');
+    //this.setState(() => ({answer1: true}))
+    //console.log(e.target.value);
     //const newValue = e.target.value;
     //console.log('newValue', newValue);
   };
@@ -52,7 +55,7 @@ export class QuizForm extends React.Component {
     //https://stackoverflow.com/questions/46554424/radio-button-error-for-name-attribute-in-react
     //Good example above but need to also support multiple choice
     
-    if(this.props.question.questionType === 'multi') {
+    if(this.props.question.questionType === 'single') {
       selectType = 'checkbox'
       checkMarkType = 'box-checkmark'
       //this.setState(() => ({ questionType: 'single' }));
@@ -84,31 +87,31 @@ export class QuizForm extends React.Component {
             type={selectType}
             value="1"
             checked={this.state.answer1}
-            onRadioChange={this.onRadioChange('no')}
+            onRadioChange={this.onRadioChange}
             myClass={checkMarkType}
           />
           <QuizRadioInput
-            text={this.props.question.answer2}
+            text={''}
             type={selectType}
             value="2"
             checked={this.state.answer2}
-            onRadioChange={(e) => this.onRadioChange('no')}
+            onRadioChange={this.onRadioChange}
             myClass={checkMarkType}
           />
           <QuizRadioInput
-            text={this.props.question.answer3}
+            text={''}
             type={selectType}
             value="3"
             checked={this.state.answer3}
-            onChange={(e) => this.onRadioChange('no')}
+            onRadioChange={this.onRadioChange}
             myClass={checkMarkType}
           />
           <QuizRadioInput
-            text={this.props.question.answer4}
+            text={''}
             type={selectType}
             value="4"
             checked={this.state.answer4}
-            onChange={(e) => this.onRadioChange('no')}
+            onRadioChange={this.onRadioChange}
             myClass={checkMarkType}
           />
           <QuizRadioInput
@@ -116,7 +119,7 @@ export class QuizForm extends React.Component {
             type={selectType}
             value="5"
             checked={this.state.answer5}
-            onChange={(e) => this.onRadioChange('no')}
+            onRadioChange={this.onRadioChange}
             myClass={checkMarkType}
           />
           <QuizRadioInput
@@ -124,7 +127,7 @@ export class QuizForm extends React.Component {
             type={selectType}
             value="6"
             checked={this.state.answer6}
-            onChange={(e) => this.onRadioChange('no')}
+            onRadioChange={this.onRadioChange}
             myClass={checkMarkType}
           />
         </div>

@@ -1,26 +1,55 @@
 import React from 'react';
 
-const QuizRadioInput = ({ text, type, value, name, checked, onRadioChange, myClass }) => {
-  if (text === '') {
-    return null;
-  }
-  else
-  {
-    return (
-      <div className="tick-container">
-        {text}
-        <input
-          type='radio'
-          value={value}
-          name={name}
-          checked={checked}
-          onChange={onRadioChange}
-        />
-        <span className={myClass}></span>
-        
-      </div>
-    )
-  };
-}
+export default class QuizRadioInput extends React.Component {
 
-export default QuizRadioInput;
+  constructor(props) {
+    super(props);
+
+    //this.onRadioChange = this.OnRadioChange.bind(this);
+
+    this.state = {
+      text : 'test',
+      name : 'test',
+      type : this.props.type,
+      value : this.props.value,
+      checked : false,
+      myClass : 'box-checkmark'
+    };
+  }
+
+  onRadioChange = (event) => {
+    this.setState({checked: true});
+    console.log('new radio clicked');
+    //this.props.onRadioChange
+    //this.setState(() => ({checked : true}));
+    // if (yesorno === 'yes') {
+    //   this.setState(() => ({ radio: 'yes' }))
+    // }
+    // else {
+    //   this.setState(() => ({ radio: 'no' }))
+    // }
+  };
+
+  render() {
+    if (this.props.text === '') {
+      return null;
+    }
+    else
+    {
+      return (
+        <div className="tick-container">
+          {this.state.text}
+          <input
+            type='checkbox'
+            name={this.state.name}
+            checked={this.state.checked}
+            onChange={this.onRadioChange}
+          />
+          <span className={this.props.myClass}></span>
+          
+        </div>
+      )
+    };
+  }
+
+}

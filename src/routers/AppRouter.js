@@ -17,6 +17,9 @@ import StartQuiz from '../components/StartQuiz';
 import LoadingQuiz from '../components/LoadingQuiz';
 import QuizForm from '../components/QuizForm';
 
+//Testing and Trial
+import TestRadioButtons from '../components/TestRadioButtons';
+
 export const history = createHistory();
 
 const AppRouter = () => (
@@ -34,6 +37,7 @@ const AppRouter = () => (
         <PrivateRoute path="/admin/question" component={QuestionDashboardPage} />
         <PrivateRoute path="/admin/category/add" component={AddCategoryPage} />
         <PrivateRoute path="/admin/category" component={CategoryDashboardPage} />
+        <PrivateRoute path="/test/buttons" component={TestRadioButtons} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
